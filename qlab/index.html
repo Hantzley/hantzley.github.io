@@ -1,0 +1,992 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="icon" href="img/icon_amazon_q.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Amazon Q Business Lab</title>
+  </head>
+  <body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-white">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="img/icon_amazon_q.png" alt="Logo" height="45">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon">
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Amazon Q Business Lab
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#Overview">1 - Lab Overview</a></li>
+              <li><a class="dropdown-item" href="#Prerequisites">2 - Prerequisites</a></li>
+              <li><a class="dropdown-item" href="#Repository">3 - Setting up document repository</a></li>
+              <li><a class="dropdown-item" href="#QApplication">4 - Creating an Amazon Q Application</a></li>
+              <li><a class="dropdown-item" href="#DataSync">5 - Syncing Data Source</a></li>
+              <li><a class="dropdown-item" href="#UseQApplication">6 - Using the Application</a></li>
+              <li><a class="dropdown-item" href="#AdvancedOptions">7 - Advanced options</a></li>
+              <li><a class="dropdown-item" href="#FileChat">8 - Upload and chat with your files</a></li>
+              <li><a class="dropdown-item" href="#AppsInQ">9 - Creating Apps within Amazon Q</a></li>
+              <li><a class="dropdown-item" href="#Jira">10 - Setting up Amazon Q Plugin (Jira)</a></li>
+              <li><a class="dropdown-item" href="#Summary">Summary</a></li>
+            </ul>
+          </li>
+      
+        </ul>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Connect
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="https://linkedin.com/in/hantzley" target="_blank">Linkedin</a></li>
+              <li><a class="dropdown-item" href="https://github.com/hantzley" target="_blank">Github</a></li>
+              <li><a class="dropdown-item" href="mailto:hantzley@amazon.com">Email</a></li>
+            </ul>
+          </li>              
+
+          <li class="nav-item">
+            <a class="btn btn-primary btn-sm text-white" href="https://aws.amazon.com" target="_blank">Survey</a>
+          </li>
+      
+        </ul>        
+
+      </div>
+    </div>
+  </nav>
+
+
+    <!-- Main-->
+    <section id="home" class="bg-cover main-section" style="background-image: url(img/bg/droids.jpg);">
+      <div class="overlay"></div>
+      <div class="container text-white text-center">
+        <div class="col-12">
+          <h1 class="display-4">Welcome to IBM-AWS GenAI CXO Roundtable!</h1>
+          <a class="btn btn-primary btn-sm text-white" href="#Overview">Start Lab</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main--> 
+    <section id="Overview" class="main-section">
+      <div class="container text-dark text-left">
+        <div class="col-12">
+          <h1 class="display-5">1 - Lab Overview</h1>
+            <p>Amazon Q Business application is a generative AI assistant that boosts employee productivity and transforms the way that you get work done. You can quickly find accurate answers from your enterprise content, backed up with citations and references. You can brainstorm new ideas, generate content, or create summaries using Amazon Q application based on your enterprise data. Amazon Q application ensures that users access enterprise content securely according to their permissions. You can quickly deploy Amazon Q application with built-in connectors to popular enterprise repositories.</p>
+            <br>
+            <h4>Solution Overview</h4>
+            <p>
+              In this lab, we will build a technical documentation assistant using Amazon Q Business to help developers find and answer questions about Swagger APIs, also known as the OpenAPI Specification, which provides a standardized way to describe APIs.
+            </p>
+            
+            <p>
+              In this situation, the Swagger API documentation consists of JSON or YAML files, flow diagrams, and other non-rich text formats. Amazon Q Business does not handle these data types by default, therefore we will need to run an enrichment process using this notebook to generate synthetic documentation based on YAML files and images for Amazon Q for Business. Here is a flow diagram of this lab:
+            </p>
+
+            <img src="img/1/1.png" width="900" class="center img-fluid">
+            <br>
+            <p>The lab is expected to take approximately <strong>60 minutes to complete</strong>.</p>
+            
+            <br>
+
+            <h4>Target Audience</h4>
+            <p>Users, developers, and AI enthusiasts</p>
+            
+        </div>
+      </div>
+    </section>    
+
+    <section id="Prerequisites"  class="div-bg-cover div-section" style="background-image: url(img/bg/bg1.jpg);">
+      <div class="overlay"></div>
+    </section>
+
+    <section class="main-section">
+      <div class="container text-dark text-left">
+        <div class="col-12">
+          <h1 class="display-5">2 - Prerequisites</h1>
+          <p>If you are running this workshop in an AWS event, an AWS account will be provisioned for you. An AWS facilitator will provide an access code or an acess link.</p>
+          <ul>
+            <li><a href="https://catalog.us-east-1.prod.workshops.aws/join" target="_blank">Click here to open Workshop Studio login page <i class="fa fa-external-link"></i></a></li>
+            <li>Select <strong>Email One-Time Password (OTP)</strong> when prompted to sign-in.</li>
+          </ul>
+          <img src="img/2/1_sign-in.png" width="500" class="center img-fluid">
+          <br>
+          <ul>
+            <li>Enter your email address and select <strong>Send passcode</strong>.</li>
+          </ul>
+          <img src="img/2/2_on-time1.png" width="500" class="center img-fluid">
+          <br>
+          <ul>
+            <li>Check your email for the one-time 9 digit passcode, enter it on the Workshop Studio page and select <strong>Sign in</strong>.</li>
+          </ul>          
+          <img src="img/2/3_on-time2.png" width="500" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              <strong>Optional:</strong> if prompted for the Event access code and select Next. You can find this access code from the Workshop Studio login URL given to you.
+            </li>
+          </ul>
+          <img src="img/2/4_event-hash.png" width="800" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              You will be presented with terms and event details page. Please read and understand the terms governing use of Workshop Studio accounts. Click the checkbox to agree with the Terms and Conditions and Select <strong>Join event</strong> to continue.
+            </li>
+            <li>
+              After you sign in to Workshop Studio, select <strong>Open AWS Console</strong> to access the AWS account provided by Workshop Studio Event. You can also copy the credentials to your own terminal.
+            </li>
+          </ul>
+          <img src="img/2/5_dashboard.png" width="1000" class="center img-fluid">
+          <br>          
+        </div>
+      </div>
+    </section>
+
+    <section id="Repository" class="div-bg-cover div-section" style="background-image: url(img/bg/bg2.jpg);">
+      <div class="overlay"></div>
+    </section>
+
+    <section class="main-section">
+      <div class="container text-dark text-left">
+        <div class="col-12">
+          <h1 class="display-5">3 - Setting up document repository</h1>
+          <p>
+            Amazon Q Business rely on your enterprise's content. In this lab, we will create a content repository on Amazon S3. However, Amazon Q can pull your enterprise data from a range of sources, for example, Amazon RDS, Box, Salesforce, Google Drive, etc.
+          </p>
+          <p>
+            Follow the steps below to create a document repository in Amazon S3:
+          </p>          
+          <ul>
+            <li>
+              Open Amazon S3 console.
+            </li>
+            <li>
+              Click the <strong>Create bucket</strong> button.
+            </li>
+          </ul>
+          <img src="img/3/1.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Give your bucket a name. This is in a global name space, so if your bucket name is already taken, please type in a different one.
+            </li>
+          </ul>
+          <img src="img/3/2.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Leave all other options by default and click the <strong>Create bucket</strong> button.
+            </li>
+          </ul>
+          <img src="img/3/3.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Your new bucket is now created and should appear in the S3 bucket list.
+            </li>
+          </ul>
+          <img src="img/3/4.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              You will need to gather some documents to upload in the repository. You can use your own documents for your business use case if you have it at hand. For convenience, you can use the following documents:
+              <ul>
+                <li><a href="https://hantzley.github.io/assets/AMZIBEE-Employee-Handbook.pdf" target="_blank">AMZIBEE Employee Handbook <i class="fa fa-external-link"></i></a></li>
+                <li><a href="https://hantzley.github.io/assets/workright-guide-employment-laws.pdf" target="_blank">Ministry of Man Power - Guide on Employment Law <i class="fa fa-external-link"></i></a></li>
+                <li><a href="https://hantzley.github.io/assets/Amazon-Leadership-Principles.pdf" target="_blank">Amazon Leadership Principles <i class="fa fa-external-link"></i></a></li>
+              </ul>
+            </li>
+            <li>
+              Download the documents on local machine.
+            </li>
+            <li>
+              To upload the documents in your S3 bucket, select your S3 bucket and then click the <strong>Upload</strong> button.
+            </li>
+          </ul>
+          <img src="img/3/5.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Add all files, then click <strong>Upload</strong> button at the bottom of the page.
+            </li>
+          </ul>
+          <img src="img/3/6.png" width="1200" class="center img-fluid">
+          <img src="img/3/7.png" width="1200" class="center img-fluid">
+          <img src="img/3/8.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              You can click on the <strong>Close</strong> button.
+            </li>
+          </ul>
+          <img src="img/3/9.png" width="1200" class="center img-fluid">
+          <br>
+        </div>
+      </div>
+    </section>       
+
+    <section id="QApplication" class="div-bg-cover div-section" style="background-image: url(img/bg/bg3.jpg);">
+      <div class="overlay"></div>
+    </section>
+
+    <section class="main-section">
+      <div class="container text-dark text-left">
+        <div class="col-12">
+          <h1 class="display-5">4 - Creating an Amazon Q Application</h1>
+          <ul>
+            <li>
+              <strong>Amazon Q Business</strong> applications needs an identity provider, in our case, identity federation and management takes place in <strong>AWS identity Center</strong>.
+            </li>
+            <li>
+              Before creating the Amazon Q Business application, let's disable MFA in IAM identity Center to make it easier to onboard users for this lab.
+            </li>
+            <li>
+              Go to <a href="https://us-west-2.console.aws.amazon.com/singlesignon/home?region=us-west-2" target="_blank">IAM identity Center console <i class="fa fa-external-link"></i></a>.
+            </li>
+            <li>
+              If it is the first time accessing IAM identity Center for this region, click <strong>Enable</strong> button.
+            </li>
+          </ul>
+          <img src="img/4/28.png" width="800" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              In the dilog window, select <strong>Enable in only this AWS account</strong> option, then click <strong>Continue</strong> button, and <strong>Enable</strong> button.
+            </li>
+          </ul>          
+          <img src="img/4/29.png" width="600" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Select <strong>Settings</strong> in the menu options on the left.
+            </li>
+            <li>
+              For <strong>MFA Settings</strong>, select <strong>Never</strong>, then <strong>Save changes</strong>.
+            </li>
+          </ul>        
+          <img src="img/4/1.png" width="1200" class="center img-fluid">
+          <img src="img/4/2.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Now, let's go to the <strong>Amazon Q Business console</strong> to create the application.
+            </li>
+            <li>
+              Click on the <strong>Create application</strong> button.
+            </li>
+          </ul>
+          <img src="img/4/3.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Give your application a name.
+            </li>
+            <li>
+              You will notice that the application is connected to an account instance of <strong>IAM Identity Center</strong>.
+            </li>
+            <li>
+              Click <strong>Create</strong> button.
+            </li>
+          </ul>
+          <img src="img/4/4.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Select <strong>Use native retriever</strong> for this lab.
+            </li>
+            <li>
+              If your organization already has an <strong>Amazon Kendra</strong> retriever, you can use it.
+            </li>
+            <li>
+              Click <strong>Next</strong>
+            </li>
+          </ul>
+          <img src="img/4/5.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Amazon Q Business allows you to connect multiple data sources in a single application. However, for this lab, we will use the document repository on S3 that you already created.
+            </li>
+            <li>
+              Click the <strong>+</strong> sign next to <strong>Amazon S3</strong>
+            </li>
+          </ul>
+          <img src="img/4/6.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Give the data source a name.
+            </li>
+          </ul>
+          <img src="img/4/7.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              For <strong>IAM role</strong>, click on the dropdown menu and select <strong>Create a new service role (Recommended)</strong>.
+            </li>
+          </ul>
+          <img src="img/4/8.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Under <strong>Sync scope</strong>, click on the <strong>Browse S3</strong> button.
+            </li>
+          </ul>
+          <img src="img/4/9.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              In the popup dialog, select your document repository S3 bucket.
+            </li>
+          </ul>
+          <img src="img/4/10.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              For <strong>Sync mode</strong>, select <strong>Full sync</strong>.
+            </li>
+            <li>
+              For <strong>Sync run schedule</strong>, click on the dropdown menu. Then select <strong>Run on demand</strong>
+            </li>
+          </ul>
+          <img src="img/4/11.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              At the bottom of the page, select <strong>Add data source</strong>.
+            </li>
+          </ul>          
+          <img src="img/4/12.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              You will notice next to <strong>Amazon S3</strong>, that one data source is added.
+            </li>
+          </ul>
+          <img src="img/4/13.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              At this point, you can add more Amazon S3 buckets as data source. Or explore other connectors that <strong>Amazon Q Business</strong> supports.
+            </li>
+            <li>
+              When done, click the <strong>Next</strong> button at the bottom of the page.
+            </li>
+          </ul>
+          <img src="img/4/14.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Now we create new users within <strong>Amazon Q Business</strong>. These users will show up under the <strong>IAM Identity Center</strong> console as well.
+            </li>
+            <li>
+              Click the <strong>Add groups and users</strong> button.
+            </li>
+          </ul>
+          <img src="img/4/15.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              The popup dialog allows us to add and assign new users or assign existing users and groups.
+            </li>
+            <li>
+              Since we don't have any users in <strong>IAM Identity Center</strong> yet, select <strong>Add and assign new users</strong> option and click <strong>Next</strong> button.
+            </li>
+          </ul>
+          <img src="img/4/16.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              On the next dialog, click <strong>Add new users</strong> button. 
+            </li>
+          </ul>
+          <img src="img/4/17.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Fill in the user details.
+            </li>
+            <li>
+              Make sure you use an email address to which you have access to for this lab.
+            </li>
+          </ul>
+          <img src="img/4/18.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              You can add more users at this stage. But for this lab, we will add only one user.
+            </li>
+            <li>
+              Click <strong>Add</strong> button.
+            </li>
+          </ul>
+          <img src="img/4/19.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Click <strong>Assign</strong> button.
+            </li>
+          </ul>
+          <img src="img/4/20.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              The user will be listed under <strong>Users</strong> section.
+            </li>
+            <li>
+              Change the <strong>Current subscription</strong> to <strong>Q Business Pro</strong>.
+            </li>
+            <li>
+              Click <strong>Create application</strong> button.
+            </li>
+          </ul>
+          <img src="img/4/21.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Access the user email. You should see an email with an invation to join <strong>AWS IAM Identity Center</strong>.
+            </li>
+            <li>
+              Click the <strong>Accept invitation</strong> button in the email.
+            </li>
+          </ul>
+          <img src="img/4/22.png" width="900" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Set a new password for the user.
+            </li>
+          </ul>
+          <img src="img/4/23.png" width="1200" class="center img-fluid">
+          <img src="img/4/24.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Now login with the new credentials
+            </li>
+          </ul>
+          <img src="img/4/25.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              After loging in, you will see the Amazon Q application in the list. Click on the application to launch it.
+            </li>
+          </ul>
+          <img src="img/4/26.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              At this stage you will not be able to query your data as we need to sync the data source first.
+            </li>
+          </ul>
+          <img src="img/4/27.png" width="1200" class="center img-fluid">
+          <br>
+                    
+        </div>
+      </div>
+    </section> 
+
+    <section id="DataSync" class="div-bg-cover div-section" style="background-image: url(img/bg/bg4.jpg);">
+      <div class="overlay"></div>
+    </section>
+
+    <section class="main-section">
+      <div class="container text-dark text-left">
+        <div class="col-12">
+          <h1 class="display-5">5 - Syncing Data Source</h1>
+          <ul>
+            <li>
+              Since we configured the data source sync to run on demand, we need to manually sync the data source. 
+            </li>
+            <li>
+              You can edit the data source settings later to sync on hourly, weekly, etc.
+            </li>
+            <li>
+              Open the <a href="https://us-west-2.console.aws.amazon.com/amazonq/business/applications?region=us-west-2" target="_blank"> Amazon Q Business console <i class="fa fa-external-link"></i></a> and open your application.
+            </li>            
+          </ul>
+          <img src="img/5/1.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Select the radio button next to the data source you want to sync. 
+            </li>
+            <li>
+              Click the <strong>Sync now</strong> button.
+            </li>
+          </ul>
+          <img src="img/5/2.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              The sync will start. I takes about 5 mins to sync the sample documents in this lab.
+            </li>
+            <li>
+              Wait till the sync is completed.    
+            </li>
+          </ul>
+          <img src="img/5/3.png" width="1200" class="center img-fluid">
+          <img src="img/5/4.png" width="1200" class="center img-fluid">
+          <br>
+          
+        </div>
+      </div>
+    </section>     
+
+    <section id="UseQApplication" class="div-bg-cover div-section" style="background-image: url(img/bg/bg1.jpg);">
+      <div class="overlay"></div>
+    </section>
+
+    <section class="main-section">
+      <div class="container text-dark text-left">
+        <div class="col-12">
+          <h1 class="display-5">6 - Using the Application</h1>
+          <ul>
+            <li>
+              Now that our data source is synced, we can use the Amazon Q application.
+            </li>
+            <li>
+              Start by typing relevant questions. See the following examples:
+            </li>
+          </ul>
+          <img src="img/6/1.png" width="1200" class="center img-fluid">
+          <img src="img/6/2.png" width="1200" class="center img-fluid">
+          <img src="img/6/3.png" width="1200" class="center img-fluid">
+          <br>
+        </div>
+      </div>
+    </section>      
+
+    <section id="AdvancedOptions" class="div-bg-cover div-section" style="background-image: url(img/bg/bg2.jpg);">
+      <div class="overlay"></div>
+    </section>    
+    
+    <section class="main-section">
+      <div class="container text-dark text-left">
+        <div class="col-12">
+          <h1 class="display-5">7 - Advanced options</h1>
+          <ul>
+            <li>
+              By default, the application knowledge is limmited to the information in your data source.
+            </li>
+            <li>
+              For example, if you ask a question which is not found in your data source, Amazon Q will tell you that it could not find relevant information for your request.
+            </li>
+          </ul>
+          <img src="img/7/1.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              We can configure Amazon Q to fall back to the LLM knowledge if relevant information is not in your data source.
+            </li>
+            <li>
+              Open the <a href="https://us-west-2.console.aws.amazon.com/amazonq/business/applications?region=us-west-2" target="_blank"> Amazon Q Business console <i class="fa fa-external-link"></i></a> and click on <strong>Admin controls and guardrails</strong> option in the menu on the left.
+            </li>
+          </ul>
+          <img src="img/7/2.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Click on the <strong>Edit</strong> button in the <strong>Global controls</strong> section.
+            </li>
+          </ul>
+          <img src="img/7/3.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Check the <strong>Allow Amazon Q to fall back to LLM knowledge</strong> option and click <strong>Save</strong> button.
+            </li>
+            <li>
+              Let's try the same question again.
+            </li>
+          </ul>
+          <img src="img/7/4.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              You will notice that now, Amazon Q will let you know that no answer was found in your data source, but will generate based on what it knows.
+            </li>
+            <li>
+              You can also configure Amazon Q to allow users to send queries directly to LLM.
+            </li>
+            <li>
+              Check the <strong>Allow end users to send queries directly to the LLM</strong> option in <strong>Admin controls and guardrails</strong> settings and save.
+            </li>
+            <li>
+              Then, in the Amazon Q application, disable the <strong>Respond from approved sources</strong> control:
+            </li>
+          </ul>
+          <img src="img/7/5.png" width="1200" class="center img-fluid">
+          <img src="img/7/6.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              You will notice under the prompt input box, the indication <strong>All data sources off</strong>.
+            </li>
+            <li>
+              Now you can ask any general question outside the context of your data source.
+            </li>
+          </ul>
+          <img src="img/7/7.png" width="1200" class="center img-fluid">
+          <br>
+          <img src="img/7/8.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Amazon Q also allows you to customize the UI for your organization.
+            </li>
+            <li>
+              Open the <a href="https://us-west-2.console.aws.amazon.com/amazonq/business/applications?region=us-west-2" target="_blank"> Amazon Q Business console <i class="fa fa-external-link"></i></a>, select your application and click on <strong>Customize web experience</strong> button.
+            </li>
+          </ul>
+          <img src="img/7/9.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              You can change the <strong>Title, Subtitle and Welcome message</strong>.
+            </li>
+            <li>
+              You can also check the <strong>Display sample prompts</strong> option if you wish.
+            </li>
+          </ul>
+          <img src="img/7/10.png" width="1200" class="center img-fluid">
+          <img src="img/7/11.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Close this window (or tab) and refresh the Amazon Q application.
+            </li>
+            <li>
+              You should see the customizations.
+            </li>
+          </ul>
+          <img src="img/7/12.png" width="1200" class="center img-fluid">
+          <br>
+          
+        </div>
+      </div>
+    </section>        
+
+    <section id="FileChat" class="div-bg-cover div-section" style="background-image: url(img/bg/bg3.jpg);">
+      <div class="overlay"></div>
+    </section>
+
+    <section class="main-section">
+      <div class="container text-dark text-left">
+        <div class="col-12">
+          <h1 class="display-5">8 - Upload and chat with your files</h1>
+          <p>Amazon Q also allows you to chat with documents that you upload together with the prompt. Let's assume you want to check a candidate for cultural fit based on your company's core principles and generate some interview questions.</p>
+          <ul>
+            <li>
+              Upload your company's core principles. At Amazon, we use <a href="https://www.amazon.jobs/content/en/our-workplace/leadership-principles" target="_blank">Leadership Principles <i class="fa fa-external-link"></i></a>.
+            </li>
+            <li>
+              You download the <a href="https://hantzley.github.io/assets/Amazon-Leadership-Principles.pdf" target="_blank">PDF version of the leadership principles <i class="fa fa-external-link"></i></a> if you like and a CV of your choice.
+            </li>
+            <li>
+              Attach them to the prompt using the paper clip icon.
+            </li>
+            <li>
+              Then ask relevant question about the candidate:
+            </li>            
+          </ul>
+          <img src="img/8/1.png" width="1200" class="center img-fluid">
+          <img src="img/8/2.png" width="1200" class="center img-fluid">
+          <img src="img/8/3.png" width="1200" class="center img-fluid">
+          <br>
+          
+        </div>
+      </div>
+    </section>
+
+    <section id="AppsInQ" class="div-bg-cover div-section" style="background-image: url(img/bg/bg4.jpg);">
+      <div class="overlay"></div>
+    </section>
+
+    <section class="main-section">
+      <div class="container text-dark text-left">
+        <div class="col-12">
+          <h1 class="display-5">9 - Creating Apps within Amazon Q</h1>
+          <p>
+            <strong>Amazon B Business</strong> gives your end users with Pro subscription, the ability to create their own apps and publish them in the main Amazon Q application's library for others to use.
+          </p>
+          <ul>
+            <li>
+              On the Amazon Q application, select the <strong>App</strong> icon on the vertical menu bar on the left.
+            </li>
+            <li>
+              Click on the <strong>Interview Question Generator</strong> option. This will populate the prompt required to generate an end user App. Then click the <strong>Generate</strong> button.
+            </li>
+          </ul>
+          <img src="img/9/9.png" width="1200" class="center img-fluid">
+          <ul>
+            <li>
+              This application has file input widgets for job description and resume. Upload a job description file and a resume. Then click the <strong>Run</strong> button.
+            </li>
+          </ul>
+          <img src="img/9/1.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              After testing your App. You can publish it so that others can find it in the Apps library. 
+            </li>
+            <li>
+              Click on the <strong>Publish</strong> button.    
+            </li>
+            <li>
+              Select relevant labels.
+            </li>
+            <li>
+              Then click on the <strong>Publish</strong> button.    
+            </li>
+          </ul>
+          <img src="img/9/2.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Go to the Apps library. The App should appear with the respective labels.
+            </li>
+          </ul>
+          <img src="img/9/3.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              In the Amazon Q Business console, it should also show up under <strong>Amazon Q Apps</strong> section.
+            </li>
+          </ul>
+          <img src="img/9/4.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              You can follow the same steps to create other Apps. The following example is an App that helps with content creation which can be helpful for marketing tasks.
+            </li>
+          </ul>
+          <img src="img/9/5.png" width="1200" class="center img-fluid">
+          <img src="img/9/6.png" width="1200" class="center img-fluid">
+          <img src="img/9/7.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Publish subsequent Apps if you want to make it available in the library.
+            </li>
+          </ul>
+          <img src="img/9/8.png" width="1200" class="center img-fluid">
+          <br>
+        </div>
+      </div>
+    </section>
+
+    <section id="Jira" class="div-bg-cover div-section" style="background-image: url(img/bg/bg1.jpg);">
+      <div class="overlay"></div>
+    </section>
+
+    <section class="main-section">
+      <div class="container text-dark text-left">
+        <div class="col-12">
+          <h1 class="display-5">10 - Setting up Amazon Q Plugin (Jira)</h1>
+          <p>
+            <strong>Amazon Q Business</strong> allows you to strigger actions using plugins. We will use Jira plugin in this lab to trigger a leaves request for our HR App. 
+          </p>
+          <ul>
+            <li>
+              If you don't have an Atlassian account, go to <a href="https://www.atlassian.com/" target="_blank">Atlassian website</a> and create a trial account.
+            </li>
+            <li>
+              After logging in, click on the Apps icon (top left) and select <strong>Jira</strong>.
+            </li>
+          </ul>
+          <img src="img/10/20.png" width="1200" class="center img-fluid">
+          <ul>
+            <li>
+              Create a project. 
+            </li>
+          </ul>
+          <img src="img/10/1.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Click on your user icon (top right) 
+            </li>
+            <li>
+              Select <strong>Manage account</strong>
+            </li>
+          </ul>
+          <img src="img/10/2.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Select <strong>Security</strong> and <strong>Create and manage API Tokens</strong>
+            </li>
+          </ul>
+          <img src="img/10/3.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Click <strong>Create API Token</strong> button.
+            </li>
+            <li>
+              Give it a label.          
+            </li>
+            <li>
+              Copy and save the API token. We will use later.
+            </li>
+          </ul>
+          <img src="img/10/4.png" width="1200" class="center img-fluid">
+          <img src="img/10/5.png" width="1200" class="center img-fluid">
+          <img src="img/10/6.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Now go to the <strong>Plugins</strong> section in the <a href="https://us-west-2.console.aws.amazon.com/amazonq/business/applications?region=us-west-2" target="_blank"> Amazon Q Business console <i class="fa fa-external-link"></i></a>.
+            </li>
+            <li>
+              Click <strong>Add plugin</strong> button.
+            </li>
+          </ul>
+          <img src="img/10/7.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Available plugins are shown here.
+            </li>
+            <li>
+              Click the <strong>+</strong> button next to the Jira plugin.
+            </li>
+          </ul>
+          <img src="img/10/8.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Give the plugin a name.
+            </li>
+            <li>
+              Key in the base URL of your Jira cloud instance.
+            </li>
+            <li>
+              Under <strong>AWS Secrets Manager secrets</strong>, click the dropdown menu and select <strong>Create and add new secret</strong>
+            </li>
+          </ul>
+          <img src="img/10/9.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Give the secret a name.
+            </li>
+            <li>
+              Key in your username. This is typically the email address you used to register an account on Atlassian.
+            </li>
+            <li>
+              Paste your API token in the API token input box.
+            </li>
+          </ul>
+          <img src="img/10/10.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Leave the options as default.
+            </li>
+            <li>
+              Click <strong>Add plugin</strong> button.
+            </li>
+          </ul>
+          <img src="img/10/11.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              After creation, it should show up as active in the plugin list.
+            </li>
+          </ul>
+          <img src="img/10/12.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Typically, you will use the plugin in a conversation. For example, in our HR App, after asking about parental leave, you can trigger the plugin. Amazon Q will use the conversation context then triggering the plugin.
+            </li>
+            <li>
+              To use the plugin in the Amazon Q application, click the icon with 3 dots next to the prompt and select the Jira plugin.
+            </li>
+          </ul>
+          <img src="img/10/13.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Type in the a request that will be sent to the Jira plugin and submit.
+            </li>
+          </ul>
+          <img src="img/10/14.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Amazon Q will show up a form for submitting a Jira issue. You will notice that the description is pre-populated with the context of your query and prior conversation.
+            </li>
+            <li>
+              Select your project.
+            </li>
+            <li>
+              Fill in the <strong>Reporter Email</strong> and click the <strong>Submit</strong> button.
+            </li>
+          </ul>
+          <img src="img/10/15.png" width="1200" class="center img-fluid">
+          <img src="img/10/16.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              Amazon Q will display the response from Jira, or an error message if it could not communicate with Jira.
+            </li>
+          </ul>
+          <img src="img/10/17.png" width="1200" class="center img-fluid">
+          <br>
+          <ul>
+            <li>
+              In your project on Jira, the request should show up. 
+            </li>
+          </ul>
+          <img src="img/10/18.png" width="1200" class="center img-fluid">
+          <img src="img/10/19.png" width="1200" class="center img-fluid">
+          <br>
+          
+        </div>
+      </div>
+    </section>    
+
+    <section id="Summary" class="div-bg-cover div-section" style="background-image: url(img/bg/bg2.jpg);">
+      <div class="overlay"></div>
+    </section>
+    
+    <section class="main-section">
+      <div class="container text-dark text-left">
+        <div class="col-12">
+          <h1 class="display-5"><i class="fa fa-trophy"></i> Summary</h1>
+          <p>
+            <strong>Congratulations!!!</strong> You have completed this <strong>Amazon Q Business</strong> lab successfully. 
+          </p>
+          <p>Feel free to reach out to the <strong>IBM-AWS</strong> team to discuss your business use cases. </p>
+          <p>
+            Your feedback is important to use. Please fill this <a class="btn btn-primary btn-sm text-white" href="https://aws.amazon.com" target="_blank">Survey</a>
+          </p>
+          <p>
+            <strong>THANK YOU!!!</strong>
+          </p>
+        </div>
+      </div>
+    </section>    
+
+    <!-- Bootstrap bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+  </body>
+</html>
+
+
